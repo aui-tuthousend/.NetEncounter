@@ -1,7 +1,9 @@
+using System.Collections;
+
 namespace MVC.NetTest.Models.Domain;
 using System;
 using System.ComponentModel.DataAnnotations;
-public class User
+public class User : IEnumerable
 {
     public Guid Id { get; set; }
 
@@ -13,4 +15,8 @@ public class User
     public string Email { get; set; } = null!;
 
     public DateTime BirthDate { get; set; }
+    public IEnumerator GetEnumerator()
+    {
+        throw new NotImplementedException();
+    }
 }

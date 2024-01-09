@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MVC.NetTest.Database;
 using MVC.NetTest.Models;
 using MVC.NetTest.Models.Domain;
@@ -12,6 +13,14 @@ public class UsersController : Controller
     {
         this._demoDbContext = data;
     }
+
+    [HttpGet]
+    public async Task<IActionResult> Index()
+    {
+        var users = await this._demoDbContext.Users.ToListAsync();
+        return View(users);
+    }
+    
     [HttpGet]
     public IActionResult Add()
     {
