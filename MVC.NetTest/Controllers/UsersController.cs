@@ -18,6 +18,8 @@ public class UsersController : Controller
     public async Task<IActionResult> Index()
     {
         var users = await this._demoDbContext.Users.ToListAsync();
+        
+        
         return View(users);
     }
     
@@ -41,6 +43,6 @@ public class UsersController : Controller
         await _demoDbContext.Users.AddAsync(usr);
         await _demoDbContext.SaveChangesAsync();
 
-        return Redirect("/");
+        return Redirect("Index");
     }
 }
