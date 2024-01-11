@@ -13,16 +13,36 @@
         <th>nama</th>
         <th>email</th>
         <th>TTL</th>
+        <th>Action</th>
     </tr>
     </thead>
     <tbody>
     @foreach (var users in Model)
     {
         <tr>
+            @if (users.Name.Equals("jamban"))
+            {
+                // continue;
+            }else{
+                <h1>not jamban</h1>
+            }
             <td>@users.Name</td>
             <td>@users.Email</td>
             <td>@users.BirthDate.ToString("dd-MM-yy")</td>
+            <td>
+                <a href="Users/View/@users.Id">Detail</a>
+            </td>            
+            @{
+                List<String> nama = new List<string>();
+                nama.Add(@users.Name);
+            }
         </tr>
     }
     </tbody>
 </table>
+
+@{
+    string kasus = "asdoakdoako";
+}
+<p>@kasus</p>
+<p>jam sekarang @DateTime.Now</p>
